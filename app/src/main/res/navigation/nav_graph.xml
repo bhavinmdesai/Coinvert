@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/enterAmountFragment">
+
+    <fragment
+        android:id="@+id/currencyConversionFragment"
+        android:name="dev.bhavindesai.coinvert.ui.fragments.CurrencyConversionFragment"
+        android:label="fragment_currency_conversion"
+        tools:layout="@layout/fragment_currency_conversion" >
+        <argument
+            android:name="currencyAbbreviation"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseSourceCurrencyFragment"
+        android:name="dev.bhavindesai.coinvert.ui.fragments.ChooseSourceCurrencyFragment"
+        android:label="fragment_choose_source_currency"
+        tools:layout="@layout/fragment_choose_source_currency"/>
+    <fragment
+        android:id="@+id/enterAmountFragment"
+        android:name="dev.bhavindesai.coinvert.ui.fragments.EnterAmountFragment"
+        android:label="EnterAmountFragment" >
+        <action
+            android:id="@+id/action_enterAmountFragment_to_currencyConversionFragment"
+            app:destination="@id/currencyConversionFragment" />
+        <action
+            android:id="@+id/action_enterAmountFragment_to_chooseSourceCurrencyFragment"
+            app:destination="@id/chooseSourceCurrencyFragment" />
+    </fragment>
+</navigation>

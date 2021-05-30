@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="dev.bhavindesai.viewmodel.EnterAmountViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context=".ui.fragments.CurrencyConversionFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEnterAmount"
+            android:background="@color/jade"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingTop="24dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.17">
+
+            <TextView
+                android:id="@+id/lblEnterAmount"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:text="@string/enter_amount"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtAmount"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                tools:text="58.69"
+                app:layout_constraintTop_toBottomOf="@id/lblEnterAmount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSelectedCurrency"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingTop="4dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintTop_toBottomOf="@id/clEnterAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.17">
+
+            <TextView
+                android:id="@+id/lblChangeCurrency"
+                android:textColor="@color/bay_of_many"
+                android:textSize="12sp"
+                android:text="@string/tap_to_change_currency"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChooseCurrency"
+                android:backgroundTint="@color/jade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_currency"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtCurrencyAbbreviation"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/jade"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                tools:text="USD"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtCurrencyName"
+                android:textColor="@color/jade"
+                android:textSize="16sp"
+                tools:text="United States Dollar"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/txtCurrencyAbbreviation"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/clGroupNoCurrencySelected"
+                android:visibility="gone"
+                app:constraint_referenced_ids="lblChangeCurrency, txtCurrencyAbbreviation, txtCurrencyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/clNumPad"
+            style="@style/TopRoundedCornersStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clSelectedCurrency"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardBackgroundColor="@color/black"
+            app:cardPreventCornerOverlap="false"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnNum1"
+                    android:layout_marginTop="24dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_1)}"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintVertical_chainStyle="spread"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/btnNum4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum2"
+                    android:text="@string/num_1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum2"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_2)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnNum1"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNum1"
+                    app:layout_constraintStart_toEndOf="@id/btnNum1"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum3"
+                    android:text="@string/num_2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum3"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_3)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnNum1"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNum1"
+                    app:layout_constraintStart_toEndOf="@id/btnNum2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/num_3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+
+                <Button
+                    android:id="@+id/btnNum4"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_4)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/btnNum1"
+                    app:layout_constraintBottom_toTopOf="@id/btnNum7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum5"
+                    android:text="@string/num_4"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum5"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_5)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnNum4"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNum4"
+                    app:layout_constraintStart_toEndOf="@id/btnNum4"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum6"
+                    android:text="@string/num_5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum6"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_6)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnNum4"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNum4"
+                    app:layout_constraintStart_toEndOf="@id/btnNum5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/num_6"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+
+                <Button
+                    android:id="@+id/btnNum7"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_7)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/btnNum4"
+                    app:layout_constraintBottom_toTopOf="@id/btnClear"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum8"
+                    android:text="@string/num_7"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum8"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_8)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnNum7"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNum7"
+                    app:layout_constraintStart_toEndOf="@id/btnNum7"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum9"
+                    android:text="@string/num_8"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum9"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_9)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnNum7"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNum7"
+                    app:layout_constraintStart_toEndOf="@id/btnNum8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/num_9"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+
+                <Button
+                    android:id="@+id/btnClear"
+                    android:onClick="@{() -> viewModel.onClearClick()}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/btnNum7"
+                    app:layout_constraintBottom_toTopOf="@id/btnConvert"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNum8"
+                    android:text="@string/num_clear"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnNum0"
+                    android:onClick="@{() -> viewModel.onNumpadClick(@string/num_0)}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnClear"
+                    app:layout_constraintBottom_toBottomOf="@id/btnClear"
+                    app:layout_constraintStart_toEndOf="@id/btnClear"
+                    app:layout_constraintEnd_toStartOf="@id/btnDoubleZero"
+                    android:text="@string/num_0"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/btnDoubleZero"
+                    android:onClick="@{() -> viewModel.onDoubleZeroClick()}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/btnClear"
+                    app:layout_constraintBottom_toBottomOf="@id/btnClear"
+                    app:layout_constraintStart_toEndOf="@id/btnNum0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/num_double_zero"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+
+                <Button
+                    android:id="@+id/btnConvert"
+                    android:backgroundTint="@color/jade"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:elevation="0dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/btnClear"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/convert"
+                    android:layout_width="0dp"
+                    android:layout_height="96dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

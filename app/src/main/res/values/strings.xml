@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Coinvert</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="tap_to_change_currency">Tap to change the currency</string>
+    <string name="choose_currency">Select Currency</string>
+
+    <string name="num_1">1</string>
+    <string name="num_2">2</string>
+    <string name="num_3">3</string>
+    <string name="num_4">4</string>
+    <string name="num_5">5</string>
+    <string name="num_6">6</string>
+    <string name="num_7">7</string>
+    <string name="num_8">8</string>
+    <string name="num_9">9</string>
+    <string name="num_0">0</string>
+    <string name="num_clear">Clear</string>
+    <string name="num_double_zero">00</string>
+    <string name="convert">Convert</string>
+    <string name="back">Back</string>
+    <string name="fetching_quotes">Fetching quotes…</string>
+    <string name="error_fetching_quotes">Error fetching quotes. Please try again later.</string>
+    <string name="quotes_updated_at">Quotes updated at: %s</string>
+</resources>

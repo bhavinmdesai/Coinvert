@@ -1,0 +1,5 @@
+rootProject.name = "Coinvert"
+include ':app'
+include ':viewmodels'
+include ':data'
+include ':domain'
